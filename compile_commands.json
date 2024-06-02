@@ -1,0 +1,51 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "src/glad.o",
+      "src/glad.c"
+    ],
+    "directory": "/Users/eyoatam/code/Learning/c_opengl/lib/glad",
+    "file": "/Users/eyoatam/code/Learning/c_opengl/lib/glad/src/glad.c",
+    "output": "/Users/eyoatam/code/Learning/c_opengl/lib/glad/src/glad.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-Wextra",
+      "-Ilib/glad/include",
+      "-Ilib/glfw/include",
+      "-Ilib/cglm/include",
+      "-Ilib/stb",
+      "-o",
+      "src/main.o",
+      "src/main.c"
+    ],
+    "directory": "/Users/eyoatam/code/Learning/c_opengl",
+    "file": "/Users/eyoatam/code/Learning/c_opengl/src/main.c",
+    "output": "/Users/eyoatam/code/Learning/c_opengl/src/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-Wextra",
+      "-Ilib/glad/include",
+      "-Ilib/glfw/include",
+      "-Ilib/cglm/include",
+      "-Ilib/stb",
+      "-o",
+      "src/texture.o",
+      "src/texture.c"
+    ],
+    "directory": "/Users/eyoatam/code/Learning/c_opengl",
+    "file": "/Users/eyoatam/code/Learning/c_opengl/src/texture.c",
+    "output": "/Users/eyoatam/code/Learning/c_opengl/src/texture.o"
+  }
+]
