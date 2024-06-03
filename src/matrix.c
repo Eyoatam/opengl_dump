@@ -82,7 +82,7 @@ void scale(float* matrix, float* factor) {
     matrix_copy(matrix, out_matrix);
 }
 
-float radian(float degree) {
+float radians(float degree) {
     return (degree * PI) / 180;
 }
 
