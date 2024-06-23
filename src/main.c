@@ -1,5 +1,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <cglm/cglm.h>
 
 #include <assert.h>
 #include <math.h>
@@ -156,34 +157,38 @@ int main() {
         
         glUseProgram(shader_program);
 
-        float view[16], projection[16];
-        matrix_identity(view);
-        matrix_identity(projection);
+        mat4 view, projection;
+        
+        /* matrix_identity(view); */
+        /* matrix_identity(projection); */
+        glm_mat4_identity(view);
+        glm_mat4_identity(projection);
 
         vec3 view_vec = {0.0f, 0.0f, -3.0f};
-        translate(view, (float*)&view_vec);
+        glm_translate(view, view_vec);
 
-        make_frustum(projection, radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
+        glm_perspective(radians(45.0f), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f, projection);
 
         unsigned int view_location = glGetUniformLocation(shader_program, "view");
-        glUniformMatrix4fv(view_location, 1, GL_FALSE, view);
+        glUniformMatrix4fv(view_location, 1, GL_FALSE, (float*)view);
 
         unsigned int projection_location = glGetUniformLocation(shader_program, "projection");
-        glUniformMatrix4fv(projection_location, 1, GL_FALSE, projection);
+        glUniformMatrix4fv(projection_location, 1, GL_FALSE, (float*)projection);
 
         // render primitives
         glBindVertexArray(VAO);
         for (int i = 0; i < 10; i++) {
-            float model[16];
-            matrix_identity(model);
-            translate(model, (float*)&cube_positions[i]);
+            mat4 model;
+            /* matrix_identity(model); */
+            glm_mat4_identity(model);
+            glm_translate(model, cube_positions[i]);
 
             float angle = 20.0f * i;
             vec3 rot = {1.0f, 0.3f, 0.5f};
-            rotate(model, radians(angle), (float*)&rot);
+            glm_rotate(model, radians(angle), (float*)&rot);
 
             unsigned int model_location = glGetUniformLocation(shader_program, "model");
-            glUniformMatrix4fv(model_location, 1, GL_FALSE, model);
+            glUniformMatrix4fv(model_location, 1, GL_FALSE, (float*)model);
 
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }

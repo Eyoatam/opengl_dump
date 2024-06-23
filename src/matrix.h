@@ -1,11 +1,11 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
-typedef struct {
-    float x;
-    float y;
-    float z;
-} vec3;
+/* typedef struct { */
+/*     float x; */
+/*     float y; */
+/*     float z; */
+/* } vec3; */
 
 void matrix_mul(float* out, float* a, float* b);
 void matrix_vec_mul(float* out, float* mat, float* vec);
