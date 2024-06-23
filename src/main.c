@@ -158,9 +158,7 @@ int main() {
         glUseProgram(shader_program);
 
         mat4 view, projection;
-        
-        /* matrix_identity(view); */
-        /* matrix_identity(projection); */
+
         glm_mat4_identity(view);
         glm_mat4_identity(projection);
 
@@ -179,8 +177,8 @@ int main() {
         glBindVertexArray(VAO);
         for (int i = 0; i < 10; i++) {
             mat4 model;
-            /* matrix_identity(model); */
             glm_mat4_identity(model);
+            
             glm_translate(model, cube_positions[i]);
 
             float angle = 20.0f * i;
