@@ -178,12 +178,11 @@ int main() {
         for (int i = 0; i < 10; i++) {
             mat4 model;
             glm_mat4_identity(model);
-            
             glm_translate(model, cube_positions[i]);
 
-            float angle = 20.0f * i;
+            /* float angle = 20.0f *; */
             vec3 rot = {1.0f, 0.3f, 0.5f};
-            glm_rotate(model, radians(angle), (float*)&rot);
+            glm_rotate(model, ((i + 1) * glfwGetTime())/2, rot);
 
             unsigned int model_location = glGetUniformLocation(shader_program, "model");
             glUniformMatrix4fv(model_location, 1, GL_FALSE, (float*)model);
