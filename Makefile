@@ -2,7 +2,7 @@ CC := gcc
 CFLAGS := -Wall -Wextra
 CFLAGS += -Ilib/glad/include -Ilib/glfw/include -Ilib/cglm/include -Ilib/stb 
 LDFLAGS = lib/glad/src/glad.o lib/cglm/libcglm.a
-LDFLAGS += -lglfw3 -framework OpenGL -framework IOKit -framework CoreVideo -framework Cocoa
+LDFLAGS += -lglfw3 -framework OpenGL -framework IOKit -framework CoreVideo -framework Cocoa -framework Metal
 
 SRC := $(wildcard src/*.c)
 OBJS := $(SRC:.c=.o)
@@ -21,13 +21,13 @@ dirs:
 	mkdir -p ./$(BIN)
 
 project: $(OBJS)
-	$(CC) -o $(BIN)/main $^ $(LDFLAGS)
+	$(CC) -o $(BIN)/main $^ $(LDFLAGS) -v
 
 run: all
 	$(BIN)/main
 
 %.o: %.c
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< $(CFLAGS) 
 
 clean:
 	rm -rf $(BIN) $(OBJS)
