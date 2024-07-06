@@ -1,3 +1,4 @@
+// clang-format off
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <cglm/cglm.h>
@@ -12,10 +13,12 @@
 #include "shader.h"
 #include "texture.h"
 
-void process_input(GLFWwindow* window);
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+// clang-format on
 
-const int WIDTH  = 800;
+void process_input(GLFWwindow *window);
+void framebuffer_size_callback(GLFWwindow *window, int width, int height);
+
+const int WIDTH = 800;
 const int HEIGHT = 600;
 
 int main() {
@@ -30,7 +33,8 @@ int main() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
 
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "C_OPENGL", NULL, NULL);
+    GLFWwindow *window =
+        glfwCreateWindow(WIDTH, HEIGHT, "C_OPENGL", NULL, NULL);
     if (window == NULL) {
         printf("%s", "GLFW: Failed to create window");
         glfwTerminate();
@@ -53,8 +57,10 @@ int main() {
     /* }; */
 
     glEnable(GL_DEPTH_TEST);
-    int shader_program = shader_create("shaders/shader.vs", "shaders/shader.fs");
+    int shader_program =
+        shader_create("shaders/shader.vs", "shaders/shader.fs");
 
+    // clang-format off
     float vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
          0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -99,7 +105,6 @@ int main() {
         -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
     };
 
-
      vec3 cube_positions[] = {
         { 0.0f,  0.0f,  0.0f}, 
         { 2.0f,  5.0f, -15.0f}, 
@@ -113,6 +118,7 @@ int main() {
         {-1.3f,  1.0f, -1.5f}  
     };
 
+    // clang-format on 
     int indices[] = {
         0, 1, 3, // first triangle
         0, 2, 3, // second triangle
